@@ -1,0 +1,51 @@
+message PagerConfig {
+  repeated Matcher rule = 1;
+}
+
+message Matcher {
+  // ID of a NotificationSequence
+  repeated string notification_sequence_id = 1;
+
+  // Regex match on the e-mail's sender.
+  repeated StringMatch sender = 2;
+
+  // Current time is within one of the time ranges.
+  repeated TimeRange time = 3;
+
+  // Match the subject of the e-mail.
+  repeated StringMatch subject = 4;
+
+  // Match the body of the e-mail.
+  repeated StringMatch body = 5;
+
+  // E-mail tag (e.g. "cpu" in chris+cpu).
+  repeated StringMatch tag = 6;
+}
+
+message StringMatch {
+  optional string substring = 1;
+  optional string regex = 2;
+}
+
+message TimeRange {
+  // Number between 0000 and 2359
+  required uint32 from = 1;
+  required uint32 to = 2;
+
+  // TODO: add time zone.
+}
+
+message Contact {
+  // Timeout for this contact, in seconds.
+  optional uint64 timeout = 1;
+
+  optional string email = 2;
+
+  optional string phone = 3;
+
+  optional string sms = 4;
+}
+
+message NotificationSequence {
+  repeated Contact contact = 1;
+}
