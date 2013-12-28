@@ -3,8 +3,8 @@ rule: <
     from: 800
     to: 1500
   >
-  notification_sequence_id: "cbro_to_phone"
+  pager: "cbro_to_phone"
 >
 rule: <
-  notification_sequence_id: "cbro"
+  pager: "cbro"
 >

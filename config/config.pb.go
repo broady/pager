@@ -30,8 +30,8 @@ func (m *PagerConfig) GetRule() []*Matcher {
 }
 
 type Matcher struct {
-	// ID of a NotificationSequence
-	NotificationSequenceId []string `protobuf:"bytes,1,rep,name=notification_sequence_id" json:"notification_sequence_id,omitempty"`
+	// ID of a Pager
+	Pager []string `protobuf:"bytes,1,rep,name=pager" json:"pager,omitempty"`
 	// Regex match on the e-mail's sender.
 	Sender []*StringMatch `protobuf:"bytes,2,rep,name=sender" json:"sender,omitempty"`
 	// Current time is within one of the time ranges.
@@ -49,9 +49,9 @@ func (m *Matcher) Reset()         { *m = Matcher{} }
 func (m *Matcher) String() string { return proto.CompactTextString(m) }
 func (*Matcher) ProtoMessage()    {}
 
-func (m *Matcher) GetNotificationSequenceId() []string {
+func (m *Matcher) GetPager() []string {
 	if m != nil {
-		return m.NotificationSequenceId
+		return m.Pager
 	}
 	return nil
 }

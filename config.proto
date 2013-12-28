@@ -3,8 +3,8 @@ message PagerConfig {
 }
 
 message Matcher {
-  // ID of a NotificationSequence
-  repeated string notification_sequence_id = 1;
+  // ID of a Pager
+  repeated string pager = 1;
 
   // Regex match on the e-mail's sender.
   repeated StringMatch sender = 2;

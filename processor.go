@@ -64,7 +64,7 @@ func matchString(sm []*config.StringMatch, s string) bool {
 
 func getNotificationSequence(rule *config.Matcher) (*config.NotificationSequence, error) {
 	var cs []*config.Contact
-	for _, id := range rule.NotificationSequenceId {
+	for _, id := range rule.Pager {
 		if ns, ok := pagers[id]; !ok {
 			return nil, fmt.Errorf("contacts not found: %s", id)
 		} else {
