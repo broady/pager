@@ -17,8 +17,8 @@ import (
 )
 
 var (
-	configs       = make(map[string]*config.PagerConfig)
-	notifications = make(map[string]*config.NotificationSequence)
+	matchers       = make(map[string]*config.PagerConfig)
+	pagers = make(map[string]*config.NotificationSequence)
 )
 
 func init() {
@@ -27,7 +27,7 @@ func init() {
 	http.HandleFunc("/notify", notificationHandler)
 	http.HandleFunc("/ack", acknowledgeHandler)
 	readNotifications()
-	readConfigs()
+	readMatchers()
 }
 
 func mailHandler(w http.ResponseWriter, r *http.Request) {
@@ -37,7 +37,7 @@ func mailHandler(w http.ResponseWriter, r *http.Request) {
 		handleAcknowledge(c, w, r, tag)
 		return
 	}
-	config, ok := configs[name]
+	config, ok := matchers[name]
 	if !ok {
 		c.Errorf("no pager matched name %s", name)
 		http.Error(w, "no pager found", 404)
@@ -150,11 +150,11 @@ func notificationHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func dumpConfigHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "config:\n")
-	b, _ := json.MarshalIndent(configs, "", "\t")
+	fmt.Fprintf(w, "matchers:\n")
+	b, _ := json.MarshalIndent(matchers, "", "\t")
 	w.Write(b)
-	fmt.Fprintf(w, "\n\nnotifications:\n")
-	b, _ = json.MarshalIndent(notifications, "", "\t")
+	fmt.Fprintf(w, "\n\npagers:\n")
+	b, _ = json.MarshalIndent(pagers, "", "\t")
 	w.Write(b)
-	proto.CompactText(w, notifications["cbro"])
+	proto.CompactText(w, pagers["cbro"])
 }

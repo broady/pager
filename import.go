@@ -10,37 +10,37 @@ import (
 )
 
 func readNotifications() {
-	dirs, err := ioutil.ReadDir("notifications")
+	dirs, err := ioutil.ReadDir("pagers")
 	check("could not read dir", err)
 	for _, configFile := range dirs {
 		n := configFile.Name()
 		if n[0] == '.' {
 			continue
 		}
-		pb, err := ioutil.ReadFile(filepath.Join("notifications", n))
+		pb, err := ioutil.ReadFile(filepath.Join("pagers", n))
 		check("could not read", err, n)
 		c := new(config.NotificationSequence)
 		err = proto.UnmarshalText(string(pb), c)
 		check("could not unmarshal", err, n)
-		notifications[n] = c
+		pagers[n] = c
 	}
 }
 
-func readConfigs() {
+func readMatchers() {
 	// TODO: add error checking for regexp.
-	dirs, err := ioutil.ReadDir("configs")
+	dirs, err := ioutil.ReadDir("matchers")
 	check("could not read dir", err)
 	for _, configFile := range dirs {
 		n := configFile.Name()
 		if n[0] == '.' {
 			continue
 		}
-		pb, err := ioutil.ReadFile(filepath.Join("configs", n))
+		pb, err := ioutil.ReadFile(filepath.Join("matchers", n))
 		check("could not read", err, n)
 		c := new(config.PagerConfig)
 		err = proto.UnmarshalText(string(pb), c)
 		check("could not unmarshal", err, n)
-		configs[n] = c
+		matchers[n] = c
 	}
 }
 
