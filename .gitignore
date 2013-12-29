@@ -22,3 +22,6 @@ _cgo_export.*
 _testmain.go
 
 *.exe
+
+# Don't commit phone numbers to the repo.
+pagers/*phone
