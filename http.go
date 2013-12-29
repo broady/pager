@@ -23,8 +23,8 @@ var (
 
 func init() {
 	http.HandleFunc("/_ah/mail/", mailHandler)
-	http.HandleFunc("/dump_config", dumpConfigHandler)
-	http.HandleFunc("/notify", notificationHandler)
+	http.HandleFunc("/admin/dump_config", dumpConfigHandler)
+	http.HandleFunc("/admin/notify", notificationHandler)
 	http.HandleFunc("/ack", acknowledgeHandler)
 	readNotifications()
 	readMatchers()

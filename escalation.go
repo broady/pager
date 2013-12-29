@@ -40,7 +40,7 @@ func (e *Escalation) scheduleNotification(c appengine.Context) (err error) {
 	if err != nil {
 		return err
 	}
-	t := taskqueue.NewPOSTTask("/notify", url.Values{
+	t := taskqueue.NewPOSTTask("/admin/notify", url.Values{
 		"k": []string{e.key.Encode()},
 	})
 	if e.LastContact > -1 {
