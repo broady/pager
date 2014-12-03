@@ -5,8 +5,8 @@ import (
 	"log"
 	"path/filepath"
 
-	proto "code.google.com/p/goprotobuf/proto"
 	"config"
+	proto "github.com/golang/protobuf/proto"
 )
 
 func readNotifications() {

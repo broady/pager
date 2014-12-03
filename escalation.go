@@ -4,8 +4,8 @@ import (
 	"net/url"
 	"time"
 
-	proto "code.google.com/p/goprotobuf/proto"
 	"config"
+	proto "github.com/golang/protobuf/proto"
 
 	"appengine"
 	"appengine/datastore"
