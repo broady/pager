@@ -9,16 +9,16 @@ import (
 	"net/mail"
 	"path"
 
-	proto "code.google.com/p/goprotobuf/proto"
 	"config"
+	proto "github.com/golang/protobuf/proto"
 
 	"appengine"
 	"appengine/datastore"
 )
 
 var (
-	matchers       = make(map[string]*config.PagerConfig)
-	pagers = make(map[string]*config.NotificationSequence)
+	matchers = make(map[string]*config.PagerConfig)
+	pagers   = make(map[string]*config.NotificationSequence)
 )
 
 func init() {

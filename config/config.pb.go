@@ -2,15 +2,27 @@
 // source: config.proto
 // DO NOT EDIT!
 
+/*
+Package config is a generated protocol buffer package.
+
+It is generated from these files:
+	config.proto
+
+It has these top-level messages:
+	PagerConfig
+	Matcher
+	StringMatch
+	TimeRange
+	Contact
+	NotificationSequence
+*/
 package config
 
-import proto "code.google.com/p/goprotobuf/proto"
-import json "encoding/json"
+import proto "github.com/golang/protobuf/proto"
 import math "math"
 
-// Reference proto, json, and math imports to suppress error if they are not otherwise used.
+// Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
-var _ = &json.SyntaxError{}
 var _ = math.Inf
 
 type PagerConfig struct {
